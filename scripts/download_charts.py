@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import datetime
 
 def download_file(url):
     local_filename = f"raw/charts/{url.strip('/').split('/')[-1]}"
@@ -14,10 +15,10 @@ def download_file(url):
                         # f.flush()
     return local_filename
 
-pages = [
-    "https://www.officialcharts.com/charts/singles-chart/20191122/",
-    "https://www.officialcharts.com/charts/singles-chart/20191220/"
-]
+start = datetime.date(2018,12,28)
 
-for page in pages:
+for week in range(0,52):
+    date = start + datetime.timedelta(week*7)
+    print(date)
+    page = f"https://www.officialcharts.com/charts/singles-chart/{date.strftime('%Y%m%d')}"
     download_file(page)
