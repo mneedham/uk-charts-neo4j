@@ -11,11 +11,11 @@ If you want to download the different charts, you can do this by running the fol
 python scripts/download.py
 ----
 
-The HTML page for each chart will be written into files in the `raw` directory.
+The HTML page for each chart will be written into files in the `raw/charts` directory.
 
 We now need to call the Spotify API to pull in the full list of collaborating artists for each track.
 I've written a blog post explaining how to https://markhneedham.com/blog/2020/01/02/spotify-api-making-my-first-call/[create a Spotify application and get the corresponding credentials^].
-Once we've skimmed that blog post, we'll create a file called `.env` and populate it with our Spotify application credentials:
+Once we've skimmed that blog post, let's create a file called `.env` and populate it with our Spotify application credentials:
 
 _.env_
 [source, bash]
@@ -37,6 +37,8 @@ Now let's execute the following script to pull down the collaborating artists:
 ----
 python scripts/download_songs_spotify.py
 ----
+
+This script writes its results into the `raw/songs` directory.
 
 And finally, let's run the following script, which will create a JSON document per chart entry in `import/items.json`:
 
