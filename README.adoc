@@ -17,6 +17,7 @@ We now need to call the Spotify API to pull in the full list of collaborating ar
 I've written a blog post explaining how to https://markhneedham.com/blog/2020/01/02/spotify-api-making-my-first-call/[create a Spotify application and get the corresponding credentials^].
 Once we've skimmed that blog post, we'll create a file called `.env` and populate it with our Spotify application credentials:
 
+_.env_
 [source, bash]
 ----
 export CLIENT_ID="<our-client-id>"
