@@ -1,3 +1,23 @@
 = Exploring the UK Charts with Neo4j
 
 The code in this repository goes with the <> blog post.
+
+== Downloading and scraping charts
+
+If you want to download the different charts, you can do this by running the following script:
+
+[source, bash]
+----
+python scripts/download.py
+----
+
+The HTML page for each chart will be written into files in the `raw` directory.
+
+
+
+We can then run the following script, which will create a JSON document per chart entry in `import/items.json`:
+
+[source,bash]
+----
+python scripts/scrape.py
+----
