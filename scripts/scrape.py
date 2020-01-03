@@ -32,6 +32,7 @@ with open("import/items.json", "w") as items_file:
                 clean_artist = " ".join([token for token in artist.replace("/", " ").split() if not token in ["Ft", "&"]])
 
                 response = spotify.get(track_link["href"])
+                items = response["tracks"]["items"]
 
                 document = {
                     "start": start,
@@ -43,7 +44,8 @@ with open("import/items.json", "w") as items_file:
                     "artist_name": artist_link.text.title(),
                     "artist_uri": artist_link["href"],
                     "label": label.title(),
-                    "spotify": response
+                    "duration": items[0]["duration_ms"] if len(items) > 0 else None,
+                    "artists": [{"id": item["id"], "name": item["name"]} for item in items[0]["artists"]] if len(items) > 0 else []
                 }
                 print(document)
 
